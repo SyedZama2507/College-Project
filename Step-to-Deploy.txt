@@ -1,0 +1,67 @@
+1.update server :
+   sudo apt update -y
+   sudo apt upgrade -y
+
+2.Installs Apache + PHP + MySQL client : 
+   sudo apt install apache2 php libapache2-mod-php php-mysql mysql-client -y
+
+3.Start & enable Apache : 
+   sudo systemctl start apache2
+   sudo systemctl enable apache2
+
+4.Test default page :
+  http://EC2-PUBLIC-IP
+
+5.Go to website folder :
+  cd /var/www/html
+  
+
+6.Remove default index.html page :
+  sudo rm index.html
+
+7.Paste the code :
+   contactus.html
+   contactus.php
+   index.html
+   etc...
+
+8.Open contactus.php and change the endpoint and password :
+  
+   
+    $con = mysqli_connect(
+      "mydb.cn0i064kwf3f.ap-south-1.rds.amazonaws.com",
+      "admin",
+      "YOUR_RDS_PASSWORD",
+      "mydb"
+    );
+
+9.Test the page :
+  http://EC2-PUBLIC-IP/index.html
+ 
+
+10. Login to database :
+
+    mysql -h mydb.cn0i064kwf3f.ap-south-1.rds.amazonaws.com -u admin -p
+
+11. command to show databases :
+    show databases;
+
+12. command to create database if database is not created by default ->
+    create database mydb
+
+13.command to use the database :
+  
+USE mydb;
+
+14. CREATE TABLE IF NOT EXISTS contactus (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50),
+  email VARCHAR(100),
+  phone VARCHAR(15),
+  gender VARCHAR(10),
+  program VARCHAR(100)
+);
+
+15. SELECT * FROM contactus;
+ 
+
